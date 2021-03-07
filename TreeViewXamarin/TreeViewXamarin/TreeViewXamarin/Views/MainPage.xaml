@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.TreeView;assembly=Syncfusion.SfTreeView.XForms"
+             xmlns:local="clr-namespace:TemplateSelector"
+             x:Class="TemplateSelector.MainPage">
+    <ContentPage.BindingContext>
+        <local:FileManagerViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ItemTemplateSelector x:Key="ItemTemplateSelector" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <syncfusion:SfTreeView x:Name="TreeView" ItemHeight="40"
+                                   AutoExpandMode="RootNodesExpanded"
+                                   ChildPropertyName="SubFiles"
+                                   ItemTemplateContextType="Node"
+                                   ItemsSource="{Binding ImageNodeInfo}" Indentation="20" 
+                                 ExpanderWidth="40" ItemTemplate="{StaticResource ItemTemplateSelector}">
+            </syncfusion:SfTreeView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
